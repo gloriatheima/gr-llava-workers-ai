@@ -114,7 +114,7 @@
 </script>
 
 <div class="container">
-	<h1>Floor is Llava</h1>
+	<h1> Image-questioning via Llava</h1>
 	<div
 		class="upload-area {isDragging ? 'dragging' : ''}"
 		role="button"
@@ -154,13 +154,13 @@
 	{/if}
 	<div class="footer">
 		<p>
-  Built with <img src="/cloudflare.gif" alt=""> on <a href="https://developers.cloudflare.com/workers-ai/" target="_blank"
+  <img src="/cloudflare.gif" alt="">Built with on <a href="https://developers.cloudflare.com/workers-ai/" target="_blank"
     >Workers AI</a
   >
 </p>
 
 		<p>
-			Learn more about <img src="/cloudflare.gif" alt=""> <a
+			<img src="/cloudflare.gif" alt=""> Learn more about <a
 				href="https://developers.cloudflare.com/workers-ai/privacy/"
 				target="_blank">Cloudflare AI data and privacy</a
 			>
