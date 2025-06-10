@@ -1,24 +1,26 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	let image: File | null = null;
-	let imageUrl: string | null = null;
-	let question: string = '';
-	let isDragging: boolean = false;
-	let description: string | null = null;
-	let isLoading: boolean = false;
+	let image: File | null = null;           // 存储上传的图片文件
+	let imageUrl: string | null = null;       // 图片的URL，用于预览
+	let question: string = '';                // 用户输入的问题
+	let isDragging: boolean = false;			// 是否正在拖拽文件
+	let description: string | null = null;		// 服务器返回的回答
+	let isLoading: boolean = false;				// 是否正在加载中
 
 	const MAX_WIDTH = 800;
 	const MAX_HEIGHT = 800;
 
 	const resizeImage = (file: File): Promise<File> => {
+		// 创建一个Promise来异步处理图片调整
 		return new Promise((resolve) => {
 			const img = new Image();
 			img.src = URL.createObjectURL(file);
 			img.onload = () => {
 				const canvas = document.createElement('canvas');
+				// 创建canvas来调整图片尺寸
 				let width = img.width;
 				let height = img.height;
-
+				// 根据最大尺寸调整图片
 				if (width > height) {
 					if (width > MAX_WIDTH) {
 						height = Math.round((height * MAX_WIDTH) / width);
@@ -30,12 +32,12 @@
 						height = MAX_HEIGHT;
 					}
 				}
-
+				// 绘制调整后的图片
 				canvas.width = width;
 				canvas.height = height;
 				const ctx = canvas.getContext('2d');
 				ctx.drawImage(img, 0, 0, width, height);
-
+				// 转换回文件对象
 				canvas.toBlob((blob) => {
 					if (blob) {
 						resolve(new File([blob], file.name, { type: file.type }));
@@ -92,6 +94,7 @@
 		formData.append('question', question);
 
 		try {
+			// 发送请求到服务器
 			const response = await fetch('/api/ask', {
 				method: 'POST',
 				body: formData
@@ -100,7 +103,7 @@
 				description: string;
 			};
 			const result: Result = await response.json();
-			description = result.description; // Store the description from the response
+			description = result.description; 		// 存储服务器返回的回答
 		} catch (error) {
 			console.error('Error submitting form:', error);
 			description = 'An error occurred while processing your request.';
@@ -151,10 +154,11 @@
 	{/if}
 	<div class="footer">
 		<p>
-			Built with 🧡 on <a href="https://developers.cloudflare.com/workers-ai/" target="_blank"
-				>Workers AI</a
-			>
-		</p>
+  Built with <img src="./img/cloudflare.gif" alt="love" style="width: 16px; height: 16px; vertical-align: middle;"> on <a href="https://developers.cloudflare.com/workers-ai/" target="_blank"
+    >Workers AI</a
+  >
+</p>
+
 		<p>
 			Learn more about <a
 				href="https://developers.cloudflare.com/workers-ai/privacy/"
@@ -180,7 +184,7 @@
 	}
 
 	h1 {
-		color: #0070f3;
+		color: #fe752c;
 	}
 
 	.upload-area {
@@ -215,7 +219,7 @@
 
 	.submit-button {
 		padding: 15px 30px;
-		background-color: #0070f3;
+		background-color: #fe752c;
 		color: white;
 		border: none;
 		border-radius: 5px;
@@ -224,13 +228,13 @@
 	}
 
 	.submit-button:hover {
-		background-color: #005bb5;
+		background-color: #fe752c;
 	}
 
 	.loading-indicator {
 		margin-top: 30px;
 		font-size: 18px;
-		color: #0070f3;
+		color: #fe752c;
 	}
 
 	.description {
@@ -238,10 +242,10 @@
 		font-size: 20px;
 		font-weight: bold;
 		padding: 20px;
-		border: 3px solid #0070f3;
+		border: 3px solid #fe752c;
 		border-radius: 5px;
 		background-color: #e0f7fa;
-		color: #0070f3;
+		color: #fe752c;
 		max-width: 80%;
 		text-align: center;
 	}
@@ -258,7 +262,7 @@
 	}
 
 	.footer a {
-		color: #0070f3;
+		color: #fe752c;
 		text-decoration: none;
 	}
 
