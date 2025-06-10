@@ -154,19 +154,19 @@
 	{/if}
 	<div class="footer">
 		<p>
-  <img src="/cloudflare.gif" alt="" style="width: 16px; height: 16px; vertical-align: middle;">Built with on <a href="https://developers.cloudflare.com/workers-ai/" target="_blank"
+  <img src="/cloudflare.gif" alt="" style="width: 100px; height: 30px; vertical-align: middle;">Built with on <a href="https://developers.cloudflare.com/workers-ai/" target="_blank"
     >Workers AI</a
   >
 </p>
 
 		<p>
-			<img src="/cloudflare.gif" alt="" style="width: 16px; height: 16px; vertical-align: middle;"> Learn more about <a
+			<img src="/cloudflare.gif" alt="" style="width: 100px; height: 30px; vertical-align: middle;"> Learn more about <a
 				href="https://developers.cloudflare.com/workers-ai/privacy/"
 				target="_blank">Cloudflare AI data and privacy</a
 			>
 		</p>
 		<p>
-			<img src="/cloudflare.gif" alt="" style="width: 16px; height: 16px; vertical-align: middle;">  the <a
+			<img src="/cloudflare.gif" alt="" style="width: 100px; height: 30px; vertical-align: middle;">  the <a
 				href="https://github.com/craigsdennis/floor-is-llava-workers-ai"
 				target="_blank">Workers AI code</a
 			>
